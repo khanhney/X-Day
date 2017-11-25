@@ -184,14 +184,14 @@ var app = (function()
 					// + '</li>'
 
 					'<li>'
-					+ '<img src="'+ beacon.img + '" class="img-responsive"> <br/>' 
+					+ '<img src="'+ beacon.img + '" class="img-responsive" style="margin-left:15px"> <br/>' 
 					// + '<img src="http://dlb99j1rm9bvr.cloudfront.net/iphone-8-plus-full-back-skin/parts/angle-1/other/base-model/size-1000/silver.png" class="img-responsive"> <br/>'
-					+	'<strong>Tên Sản Phẩm: ' + beacon.nameProduct + '</strong><br />'
-					+	'Giá Tiền: ' + beacon.priceProduct + '<br />'
+					+	'<div class="flex-container"><strong style="font-size:18px; font-weight: bolder;"> <span class="glyphicon glyphicon-star-empty"></span>' + beacon.nameProduct + '</strong></div><br />'
+					+	'Giá Tiền: <span style="color: red">' + beacon.priceProduct + '</span><br />'
 					+	'Xuất Sứ: ' + beacon.madeIn + '<br />'
 					+	'Thông Tin: ' + beacon.info + '<br />'
-					+ "<div class='flex-container'><button class='red' data-toggle='collapse' data-target='#demo'><a href='./muangay.html'>Mua Ngay</a></button></div>"
-					+ "<div class='flex-container'><button class='blue'><a href='./thongtin.html'>Xem Thêm Thông Tin</a></button></div>"
+					+ "<div class='flex-container'  style='margin-left:15px'><button class='red' ><span class='glyphicon glyphicon-shopping-cart' style='margin-right: 10px'></span><a href='./muangay.html'>Mua Ngay</a></button></div>"
+					+ "<div class='flex-container'  style='margin-left:15px'><button class='blue'><a href='./thongtin.html'>Xem Thêm Thông Tin</a></button></div>"
 					+ '</li>'
 					+ '<br/> <br/>'
 					// '<li>'
