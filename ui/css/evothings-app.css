@@ -7,7 +7,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 
-	font-family: 'Proxima Nova Regular', sans-serif;
+	font-family: 'Times New Roman', sans-serif;
 	font-weight: normal;
 
 	background: rgb(255,255,255);
@@ -209,7 +209,7 @@ header menu > * {
 
 	padding: 0 1em 0 1em;
 
-	font-family: 'Proxima Nova Bold';
+	font-family: 'Times New Roman';
 	font-size: 35%;
 	text-align: right;
 }
@@ -357,7 +357,7 @@ input.btn-group + label,
 	display: inline-block;
 	box-sizing: border-box; /* Width & height includes padding & border. */
 
-	font-family: 'Proxima Nova Black';
+	font-family: 'Times New Roman';
 	font-size: inherit;
 	line-height: 100%;
 	text-align: center;
@@ -465,7 +465,7 @@ h1 {
 	padding: 0;
 	margin: 1em 0 0 0;
 
-	font-family: 'Proxima Nova Black';
+	font-family: 'Times New Roman';
 	font-size: 100%;
 	line-height: 1.5;
 
@@ -479,7 +479,7 @@ h2,h3,h4,h5,h6 {
 	margin: 1em 0 0 0;
 	padding: 0;
 
-	font-family: 'Proxima Nova Bold';
+	font-family: 'Times New Roman';
 	font-size: 63%;
 
 	line-height: 1.5;
@@ -506,11 +506,11 @@ table {
 	text-align: left;
 }
 thead {
-	font-family: 'Proxima Nova Bold';
+	font-family: 'Times New Roman';
 }
 
 strong {
-	font-family: 'Proxima Nova Bold';
+	font-family: 'Times New Roman';
 }
 
 code {
@@ -536,7 +536,7 @@ ol li, ul li {
 ol li:before {
 	content: counter(item) ". ";
 	counter-increment: item;
-	font-family: 'Proxima Nova Bold';
+	font-family: 'Times New Roman';
 }
 ul.dynamic {
 	list-style-type: none;

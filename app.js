@@ -3,12 +3,7 @@ var app = (function()
 	// Application object.
 	var app = {};
 
-	// Specify your beacon 128bit UUIDs here.
-	var regions =
-	[
-		{uuid:'74278BDA-B644-4520-8F0C-720EAF059935'},
-		{uuid:'95F428B1-4A3A-4E39-B086-21BFF38DEB6D'}
-	];
+	
 
 	
 
@@ -43,27 +38,55 @@ var app = (function()
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
 	}
+	var product = [];
 
-	var product = [
-		{
-			uuid:'74278BDA-B644-4520-8F0C-720EAF059935', 
-			minor: '64001',
-			nameProduct: 'Galaxy Note 8',
-			priceProduct: '15.000.000 VNĐ',
-			madeIn: 'Hàn Quốc',
-			info: 'Sản Phẩm Xuất xứ từ Hàn Quốc',
-			img: 'http://iphonestore.com.vn/media/images/products/2017-10/04/dien-thoai-viet-note-8.png'
-		},
-		{
-			uuid:'95F428B1-4A3A-4E39-B086-21BFF38DEB6D', 
-			minor: '72',
-			nameProduct: 'Iphone 5S Chính Hãng',
-			priceProduct: '5.000.000 VNĐ',
-			madeIn: 'USA',
-			info: 'Sản Phẩm Bán Chạy Nhất Năm 2016',
-			img: 'http://dlb99j1rm9bvr.cloudfront.net/iphone-8-plus-full-back-skin/parts/angle-1/other/base-model/size-1000/silver.png'
-		}
-	]
+	$.get("https://api.mongolab.com/api/1/databases/xday/collections/apis?apiKey=kPpxgh2X_upv8Z66irZuhRNdTyQX6c_D", function(data, status){
+		product = data;
+		//alert(product[2].uuid);
+	});
+	// // Specify your beacon 128bit UUIDs here.
+	// var regions = [];
+	// var test = {};
+	// for(let i = 0 ; i < product.length ; i++){test.uuid = product[i].uuid; regions.push(test)}
+	// alert(regions.length)
+	var regions =
+	[
+		{uuid:'74278BDA-B644-4520-8F0C-720EAF059935'},
+		{uuid:'95F428B1-4A3A-4E39-B086-21BFF38DEB6D'},
+		{uuid:'10401A78-B9C4-499A-8E69-00460425DB2B'}
+	];
+
+	// var product = [
+	// 	{
+	// 		uuid:'74278BDA-B644-4520-8F0C-720EAF059935', 
+	// 		minor: '64001',
+	// 		nameProduct: 'Galaxy Note 8',
+	// 		priceProduct: '15.000.000 VNĐ',
+	// 		madeIn: 'Hàn Quốc',
+	// 		info: 'Sản Phẩm Xuất xứ từ Hàn Quốc',
+	// 		img: 'http://iphonestore.com.vn/media/images/products/2017-10/04/dien-thoai-viet-note-8.png'
+	// 	},
+	// 	{
+	// 		uuid:'95F428B1-4A3A-4E39-B086-21BFF38DEB6D', 
+	// 		minor: '72',
+	// 		nameProduct: 'Iphone 5S Chính Hãng',
+	// 		priceProduct: '5.000.000 VNĐ',
+	// 		madeIn: 'USA',
+	// 		info: 'Sản Phẩm Bán Chạy Nhất Năm 2016',
+	// 		img: 'http://dlb99j1rm9bvr.cloudfront.net/iphone-8-plus-full-back-skin/parts/angle-1/other/base-model/size-1000/silver.png'
+	// 	}
+	// ];
+	
+	// product.forEach(e => console.log(e));
+	
+	// var test = {};
+	// var regions = [];
+	// for(let i = 0 ; i < product.length ; i++){
+	// 	test.uuid = product[i].uuid;
+	// 	regions.push(test);
+	// };
+	// regions.forEach(e => console.log(e));
+
 
 
 	function startScan()
@@ -166,9 +189,7 @@ var app = (function()
 			// if (beacon.timeStamp + 60000 > timeNow)
 			// {
 				// Map the RSSI value to a width in percent for the indicator.
-				var rssiWidth = 1; // Used when RSSI is zero or greater.
-				if (beacon.rssi < -100) { rssiWidth = 100; }
-				else if (beacon.rssi < 0) { rssiWidth = 100 + beacon.rssi; }
+				
 
 				// Create tag to display beacon data.
 				var element = $(
@@ -186,12 +207,16 @@ var app = (function()
 					'<li>'
 					+ '<img src="'+ beacon.img + '" class="img-responsive" style="margin-left:15px"> <br/>' 
 					// + '<img src="http://dlb99j1rm9bvr.cloudfront.net/iphone-8-plus-full-back-skin/parts/angle-1/other/base-model/size-1000/silver.png" class="img-responsive"> <br/>'
-					+	'<div class="flex-container"><strong style="font-size:18px; font-weight: bolder;"> <span class="glyphicon glyphicon-star-empty"></span>' + beacon.nameProduct + '</strong></div><br />'
-					+	'Giá Tiền: <span style="color: red">' + beacon.priceProduct + '</span><br />'
+					+	'<div class="flex-container"><strong style="font-size:18px; font-weight: bolder;"> <span class="glyphicon glyphicon-star-empty" style="margin-right: 7px"></span>' + beacon.nameProduct + '</strong></div><br />'
+					+	'Giá Tiền: <span style="color: red; font-weight: bolder">' + beacon.priceProduct + '</span><br />'
+					+   'Khuyến Mãi: <i class="glyphicon glyphicon-certificate" style="color: red"></i><i style="color: red">10%</i><br/>'
 					+	'Xuất Sứ: ' + beacon.madeIn + '<br />'
 					+	'Thông Tin: ' + beacon.info + '<br />'
-					+ "<div class='flex-container'  style='margin-left:15px'><button class='red' ><span class='glyphicon glyphicon-shopping-cart' style='margin-right: 10px'></span><a href='./muangay.html'>Mua Ngay</a></button></div>"
-					+ "<div class='flex-container'  style='margin-left:15px'><button class='blue'><a href='./thongtin.html'>Xem Thêm Thông Tin</a></button></div>"
+						+ "<div class='flex-container'  style='margin-left:15px'><button class='blue' ><span class='glyphicon glyphicon-info-sign' style='margin-right: 10px'></span><a href='./muangay.html' style='font-weight:bolder'>Thông Tin Sản Phẩm</a></button></div>"
+					// + "<div class='flex-container'  style='margin-left:15px'><button class='blue'><a href='./thongtin.html'>Xem Thêm Thông Tin</a></button></div>"
+					// +	'RSSI: ' + beacon.rssi + '<br />'
+					// + 	'<div style="background:rgb(255,128,64);height:20px;width:'
+					// + 		rssiWidth + '%;"></div>'
 					+ '</li>'
 					+ '<br/> <br/>'
 					// '<li>'
@@ -203,9 +228,15 @@ var app = (function()
 					+	'<strong>Tên Sản Phẩm: ' + beacon.nameProduct + '</strong><br />'
 					+ '</div>'
 				)
-
+				var rssiWidth = 1; // Used when RSSI is zero or greater.
+				if (beacon.rssi < -100) { rssiWidth = 100; }
+				// else if (beacon.rssi < 0 && beacon.rssi > -56) { 
+				// //  }
+				//  else if(beacon.rssi < -56){
+				// 	$('#found-beacons').prepend(element);	 
+				//  }
 				$('#warning').remove();
-				$('#found-beacons').prepend(element);
+				$('#found-beacons').prepend(element);				
 				$('#elementMuaNgay').prepend(elementMuaNgay);
 			// }
 		});
